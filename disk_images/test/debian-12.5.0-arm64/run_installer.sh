@@ -1,30 +1,30 @@
 #!/usr/bin/env bash
+# Usage: test/release_name/run_installer.sh
+# Creates the "before first boot" HDD image and runs the installer ISO
+
 set -euo pipefail
 
-NAME="debian-12.5.0-arm64"
-QEMU_PREFIX="/opt/homebrew/Cellar/qemu/8.2.1/share/qemu/"
+. test/debian-12.5.0-arm64/lib.sh
+
+if [ ! -f "$HDD_BFB" ]; then
+    qemu-img create -f qcow2 "$HDD_BFB" 100G
+fi
+
+cp "$EFI_VARS_SRC" "$EFI_VARS_BFB"
 
 args=(
-    "-name" "$NAME"
-    # TODO: May be redundant
-    "-L" "$QEMU_PREFIX"
-    # Provides "usb-bus.0" that other USB devices use
-    "-device" "nec-usb-xhci,id=usb-bus"
-    "-device" "virtio-balloon-pci"
-    "-device" "virtio-gpu-pci"
-    "-device" "virtio-rng-pci"
-    "-device" "usb-kbd,bus=usb-bus.0"
-    "-cpu" "host"
+    "${QEMU_ARGS[@]}"
+
     # During install, give the VM lots of resources to complete the install quickly
     # For performance tests, we may shrink the resources
     "-smp" "cpus=8,sockets=1,cores=8,threads=1"
     "-m" "8192"
-    "-machine" "virt"
-    # Will have to generalize this for non-macOS
-    "-accel" "hvf"
-    # Must be a BIOS or something?
-    "-drive" "if=pflash,format=raw,unit=0,file.filename=$QEMU_PREFIX/edk2-aarch64-code.fd,file.locking=off,readonly=on"
-    "-cdrom" "install/debian-12.5.0-arm64-netinst.iso"
+
+    # EFI vars are writable during install
+    "-drive" "if=pflash,unit=1,file=$EFI_VARS_BFB,readonly=off"
+
+    "-cdrom" "$INSTALL_ISO"
+    "-hda" "$HDD_BFB"
 )
 
 qemu-system-aarch64 "${args[@]}"
