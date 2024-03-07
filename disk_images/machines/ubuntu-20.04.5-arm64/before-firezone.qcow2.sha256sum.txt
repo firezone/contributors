@@ -1,1 +1,1 @@
-e38ce79007e40e9f50c46c2d4db2a1eebd931101eb99b2413c120a200996b3bd  before-firezone.qcow2
+e9f78dd6b6f9aaf2c6300fcf951a74f8b80cb098bf995a4fcbd15bf5237ddd36  before-firezone.qcow2
