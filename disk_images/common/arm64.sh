@@ -1,18 +1,16 @@
 #!/usr/bin/env bash
+# Usage: Don't use
+# 
+# Higher-level scripts wil source this to set up QEMU args for aarch64 guests
 
-NAME="debian-12.5.0-arm64"
-INSTALL_ISO="install/debian-12.5.0-arm64-netinst.iso"
 HDD_BFB="$DIR/before-first-boot.qcow2"
 QEMU_PREFIX="/opt/homebrew/Cellar/qemu/8.2.1/share/qemu"
-
 EFI_CODE="$QEMU_PREFIX/edk2-aarch64-code.fd"
 EFI_VARS_SRC="$QEMU_PREFIX/edk2-arm-vars.fd"
 EFI_VARS_BFB="$DIR/efi_vars_bfb.fd"
 
 QEMU_ARGS=(
-    "-name" "$NAME"
-    # TODO: May be redundant
-    "-L" "$QEMU_PREFIX"
+    "${QEMU_ARGS[@]}"
 
     # Stuff that tells qemu to go fast and use a default machine
     #   Will have to generalize this for non-macOS
@@ -34,4 +32,6 @@ QEMU_ARGS=(
     "-device" "virtio-rng-pci"
     #   Shows a default mouse cursor
     "-display" "cocoa,show-cursor=on"
+
+    "-name" "$NAME"
 )

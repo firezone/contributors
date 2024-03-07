@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
-# Usage: ./run_installer.sh test/debian-12.5.0-arm64
-# Creates the "before first boot" HDD image and runs the installer ISO
+# Usage: ./install_machine.sh machines/debian-12.5.0-arm64
+# 
+# Destructive.
+# 
+# Installs the "Before First Boot" image from a Linux distro's installer ISO.
+# If you use this to modify the "Before First Boot" QCOW2, you will need to rebuild the
+# "Before Firezone" overlay.
 
 set -euo pipefail
 

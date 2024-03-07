@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-# Runs the "before first boot" HDD with `-snapshot` so the file won't be changed.
+# Usage: ./run_first_boot.sh machines/debian-12.5.0-arm64
+#
+# Non-destructive run of the "Before First Boot" image. This is a standalone QCOW2
+# frozen after the VM has installed Linux and been shut down. It may not have a
+# desktop environment.
+# This script uses `-snapshot`, so the QCOW2 image will not be changed.
 
 set -euo pipefail
 

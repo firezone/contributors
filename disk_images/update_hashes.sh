@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Usage: ./update_hashes.sh test/debian-12.5.0-arm64
+# Usage: ./update_hashes.sh machines/debian-12.5.0-arm64
+#
+# Rewrites the hashes of the QCOW2 images
 
 set -euo pipefail
 

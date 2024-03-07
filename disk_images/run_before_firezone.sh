@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
-# Usage: ./run_before_firezone.sh test/debian-12.5.0-arm64
-# Runs the "before Firezone" HDD image. The VM will not persist changes.
+# Usage: ./run_before_firezone.sh machines/debian-12.5.0-arm64
+# 
+# Non-destructive run of the "Before Firezone" image. For each machine this image
+# is an overlay on "Before First Boot". It will have some desktop environment installed.
+# This script uses `-snapshot`, so the QCOW2 image will not be changed.
 
 set -euo pipefail
 

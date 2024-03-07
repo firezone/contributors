@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Usage: ./update_before_firezone.sh test/debian-12.5.0-arm64
-# Uses the "Before first boot" image as a base to create a "Before Firezone" overlay
+# Usage: ./update_before_firezone.sh machines/debian-12.5.0-arm64
+
 
 set -euo pipefail
 
@@ -19,7 +19,7 @@ QEMU_ARGS=(
     "-m" "8192"
 
     # Use a temp copy of EFI vars since we shouldn't be changing the boot loader
-    "-drive" "if=pflash,unit=1,file=$EFI_VARS_TEMP,readonly=off"
+    "-drive" "if=pflash,unit=1,format=raw,file=$EFI_VARS_TEMP,readonly=off"
 
     "-hda" "$HDD_BF"
 )
