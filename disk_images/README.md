@@ -9,7 +9,7 @@ These files are too big to reasonably store in Git, so the images are
 blocked by `.gitignore` and only the `*.sha256sum.txt` files are checked 
 in.
 
-`b3sum` sums are provided because BLAKE3 is faster than SHA256 and it's noticeable on large files and slow CPUs.
+`b3sum` sums are provided because BLAKE3 is faster than SHA256 and it's noticeable on large files or slow CPUs.
 
 - [Debian version table](https://en.wikipedia.org/wiki/Debian_version_history#Release_table)
 - [Ubuntu version table](https://en.wikipedia.org/wiki/Ubuntu_version_history#Table_of_versions)

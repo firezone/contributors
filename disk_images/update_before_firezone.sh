@@ -24,14 +24,14 @@ QEMU_ARGS=(
     "-hda" "$HDD_BF"
 )
 
+if [ ! -f "$HDD_BF" ]; then
+    echo "$HDD_BFB"
+    echo "$HDD_BF"
+    qemu-img create -b "before-first-boot.qcow2" -F qcow2 -f qcow2 "$HDD_BF" 100G
+fi
+
 # The EFI vars must be writable for the VM to boot. 
 # We don't want those trashed, so copy them.
 cp "$EFI_VARS_BFB" "$EFI_VARS_TEMP"
-
-if [ ! -f "$HDD_BF" ]; then
-    env | sort
-    qemu-img create -b "$HDD_BFB" -F qcow2 -f qcow2 "$HDD_BF" 100G
-fi
-
 qemu-system-aarch64 "${QEMU_ARGS[@]}"
 rm "$EFI_VARS_TEMP"

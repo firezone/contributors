@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 NAME="debian-12.5.0-arm64"
-DIR="test/$NAME"
 INSTALL_ISO="install/debian-12.5.0-arm64-netinst.iso"
 HDD_BFB="$DIR/before-first-boot.qcow2"
 QEMU_PREFIX="/opt/homebrew/Cellar/qemu/8.2.1/share/qemu"
