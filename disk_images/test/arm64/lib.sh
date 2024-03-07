@@ -31,4 +31,6 @@ QEMU_ARGS=(
     "-device" "virtio-rng-pci"
     #   Shows a default mouse cursor
     "-display" "cocoa,show-cursor=on"
+
+    "-name" "$NAME"
 )

@@ -34,3 +34,4 @@ if [ ! -f "$HDD_BF" ]; then
 fi
 
 qemu-system-aarch64 "${QEMU_ARGS[@]}"
+rm "$EFI_VARS_TEMP"

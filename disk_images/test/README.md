@@ -4,6 +4,8 @@ Pre-installed copies of Debian, Ubuntu, etc. that have a non-admin user
 with sudo and only the base packages. They've never seen Firezone before,
 so they can simulate first-time installs.
 
+Try `./run_before_firezone.sh test/ubuntu-22.04.4-arm64`
+
 To create an overlay image without modifying the original:
 
 ```bash
