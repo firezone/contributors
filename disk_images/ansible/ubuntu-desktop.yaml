@@ -1,0 +1,18 @@
+---
+# Turns Ubuntu Server into approximately Ubuntu Desktop
+
+- hosts: ubuntu
+  tasks:
+  - name: Update apt-get repo and cache
+    become: yes
+    ansible.builtin.apt:
+      update_cache: yes
+      cache_valid_time: 3600
+  - name: Install apt packages
+    become: yes
+    ansible.builtin.apt:
+      name: ubuntu-desktop
+      state: latest
+  - name: Reboot
+    become: yes
+    ansible.builtin.reboot:

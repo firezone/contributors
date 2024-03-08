@@ -26,10 +26,6 @@ QEMU_ARGS=(
 
     "-hda" "$HDD_BF"
     "-snapshot"
-
-    # Shared folder
-    "-fsdev" "local,id=virtfs0,path=share,security_model=mapped-xattr"
-    "-device" "virtio-9p-pci,fsdev=virtfs0,mount_tag=share"
 )
 
 # The EFI vars must be writable. We don't want those trashed, so copy them.

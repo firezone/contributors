@@ -22,10 +22,6 @@ QEMU_ARGS=(
     "-drive" "if=pflash,unit=1,format=raw,file=$EFI_VARS_TEMP,readonly=off"
 
     "-hda" "$HDD_BF"
-
-    # Shared folder
-    "-fsdev" "local,id=virtfs0,path=share,security_model=mapped-xattr"
-    "-device" "virtio-9p-pci,fsdev=virtfs0,mount_tag=share"
 )
 
 if [ ! -f "$HDD_BF" ]; then

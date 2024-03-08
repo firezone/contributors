@@ -12,6 +12,20 @@ To boot a test VM, run `./run_before_firezone.sh machines/$MACHINE_NAME`
 To rebuild the "Before Firezone" overlay without re-installing the entire OS,
 run the steps again starting from `./update_before_firezone.sh`
 
+Make sure Ubuntu has `/etc/netplan/00-installer-config.yaml` set to this,
+otherwise it'll waste 3 minutes at boot and shutdown waiting on the network:
+
+```yaml
+# Fix Ethernet name and make it optional
+network:
+  ethernets:
+    enp0s6:
+      dhcp4: true
+      dhcp6: true
+      optional: true
+  version: 2
+```
+
 ## Details
 
 - `common` - Bash script components, not for human use

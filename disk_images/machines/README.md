@@ -4,7 +4,7 @@ Pre-installed copies of Debian, Ubuntu, etc. that have a non-admin user
 with sudo and only the base packages. They've never seen Firezone before,
 so they can simulate first-time installs.
 
-Log in with `user` and `password`.
+Log in with `user` and `password`. SSH is port 22 in the guest, forwarded to port 2222 on the host by default, override with `SSH_FWD_PORT`
 
 Ubuntu doesn't publish official aarch64 desktop images, so the Ubuntus are
 Ubuntu Server with `sudo apt-get install ubuntu-desktop`.

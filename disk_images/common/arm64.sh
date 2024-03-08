@@ -34,4 +34,12 @@ QEMU_ARGS=(
     "-display" "cocoa,show-cursor=on"
 
     "-name" "$NAME"
+
+    # Shared folder
+    "-fsdev" "local,id=virtfs0,path=share,security_model=mapped-xattr"
+    "-device" "virtio-9p-pci,fsdev=virtfs0,mount_tag=share"
+
+    # SSH, for Ansible
+    "-netdev" "user,id=mynet0,hostfwd=tcp:127.0.0.1:${SSH_FWD_PORT:-2222}-:22"
+    "-device" "virtio-net,netdev=mynet0"
 )
