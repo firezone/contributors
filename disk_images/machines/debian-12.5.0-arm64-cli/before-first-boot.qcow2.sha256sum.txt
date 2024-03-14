@@ -1,0 +1,1 @@
+4dba375ad27fb50b67854f5225b35b4b7dac60d156a8e60e75e9d586507580a6  before-first-boot.qcow2

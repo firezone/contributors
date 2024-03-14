@@ -1,2 +1,5 @@
 *.iso
 *.iso.part
+*.qcow2
+
+efi_vars_temp.fd
