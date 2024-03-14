@@ -22,7 +22,7 @@ QEMU_ARGS=(
     "-m" "2048"
 
     # For normal use, use a writable copy of the before-first-boot EFI vars
-    "-drive" "if=pflash,unit=1,file=$EFI_VARS_TEMP,readonly=off"
+    "-drive" "if=pflash,unit=1,format=raw,file=$EFI_VARS_TEMP,readonly=off"
 
     "-hda" "$HDD_BF"
     "-snapshot"
@@ -30,6 +30,7 @@ QEMU_ARGS=(
 
 # The EFI vars must be writable. We don't want those trashed, so copy them.
 cp "$EFI_VARS_BFB" "$EFI_VARS_TEMP"
-
+date -u
 qemu-system-aarch64 "${QEMU_ARGS[@]}"
+b3sum "$EFI_VARS_BFB" "$EFI_VARS_TEMP"
 rm "$EFI_VARS_TEMP"

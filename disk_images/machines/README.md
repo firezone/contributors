@@ -12,7 +12,7 @@ Ubuntu Server with `sudo apt-get install ubuntu-desktop`.
 Debian with KDE is available at ReactorScram's personal preference.
 
 The "before-firezone" images are overlays atop "before-first-boot".
-So if you update the "before-first-boot" image, e.g. by re-running `run_installer.sh`, you will need to rebuild the "before-firezone" overlay by deleting it and running `update_before_firezone.sh`
+So if you update the "before-first-boot" image, e.g. by re-running `install_machine.sh`, you will need to rebuild the "before-firezone" overlay by deleting it and running `update_before_firezone.sh`
 
 Try `./run_before_firezone.sh machines/ubuntu-22.04.4-arm64`
 
