@@ -1,0 +1,52 @@
+---
+# Dev kitten
+
+- hosts: dev
+  tasks:
+  - name: Update apt-get repo and cache
+    become: yes
+    ansible.builtin.apt:
+      update_cache: yes
+      cache_valid_time: 3600
+    # https://waylonwalker.com/install-rust/
+  - name: Check for Cargo
+    shell: command -v cargo
+    register: cargo_exists
+    ignore_errors: yes
+  - name: Download rustup-init
+    when: cargo_exists is failed
+    get_url:
+      url: https://sh.rustup.rs
+      dest: /tmp/sh.rustup.rs
+      mode: '0755'
+      force: 'yes'
+    tags:
+      - rust
+  - name: Install Rust
+    when: cargo_exists is failed
+    shell: /tmp/sh.rustup.rs -y
+    tags:
+      - rust
+  - name: Install KDE
+    become: yes
+    ansible.builtin.apt:
+      name: [kate, kscreen, kubuntu-desktop, sddm]
+  - name: Install VM guest stuff
+    become: yes
+    ansible.builtin.apt:
+      name: [spice-vdagent]
+  - name: Install CLI packages
+    become: yes
+    ansible.builtin.apt:
+      name: [curl, git, jq, pv, screen]
+  - name: Install Tauri deps
+    become: yes
+    ansible.builtin.apt:
+      name: [at-spi2-core, build-essential, gnome-keyring, libayatana-appindicator3-dev, libgtk-3-dev, librsvg2-dev, libssl-dev, libwebkit2gtk-4.0-dev]
+  - name: mkdir projects
+    ansible.builtin.file:
+      path: /home/user/projects
+      state: directory
+  - name: Reboot
+    become: yes
+    ansible.builtin.reboot:
