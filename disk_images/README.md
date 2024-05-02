@@ -15,6 +15,8 @@ run the steps again starting from `./update_before_firezone.sh`
 Make sure Ubuntu has `/etc/netplan/00-installer-config.yaml` set to this,
 otherwise it'll waste 3 minutes at boot and shutdown waiting on the network:
 
+(on Ubuntu 24.04 this is `/etc/netplan/50-cloud-init.yaml`)
+
 ```yaml
 # Fix Ethernet name and make it optional
 network:
