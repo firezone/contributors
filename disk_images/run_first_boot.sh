@@ -30,5 +30,7 @@ QEMU_ARGS=(
 
 # The EFI vars must be writable. We don't want those trashed, so copy them.
 cp "$EFI_VARS_BFB" "$EFI_VARS_TEMP"
+
+echo "${QEMU_ARGS[@]}"
 qemu-system-aarch64 "${QEMU_ARGS[@]}"
 rm "$EFI_VARS_TEMP"

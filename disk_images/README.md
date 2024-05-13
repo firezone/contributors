@@ -12,8 +12,12 @@ To boot a test VM, run `./run_before_firezone.sh machines/$MACHINE_NAME`
 To rebuild the "Before Firezone" overlay without re-installing the entire OS,
 run the steps again starting from `./update_before_firezone.sh`
 
+### Netplan
+
 Make sure Ubuntu has `/etc/netplan/00-installer-config.yaml` set to this,
 otherwise it'll waste 3 minutes at boot and shutdown waiting on the network:
+
+(on Ubuntu 24.04 this is `/etc/netplan/50-cloud-init.yaml`)
 
 ```yaml
 # Fix Ethernet name and make it optional
@@ -25,6 +29,18 @@ network:
       optional: true
   version: 2
 ```
+
+### File share
+
+`mkdir $HOME/share`, then put this in `/etc/fstab`:
+
+```
+share  /home/user/share 9p trans=virtio,version=9p2000.L,rw 0 0
+```
+
+Test it by rebooting "run_before" before committing it with 
+"update_before",
+since an error here can soft-brick the VM.
 
 ## Details
 

@@ -36,7 +36,7 @@ QEMU_ARGS=(
     "-name" "$NAME"
 
     # Shared folder
-    "-fsdev" "local,id=virtfs0,path=share,security_model=mapped-xattr"
+    "-fsdev" "local,id=virtfs0,path=/Users/user/projects/ubuntu_vm/share,security_model=mapped-xattr"
     "-device" "virtio-9p-pci,fsdev=virtfs0,mount_tag=share"
 
     # SSH, for Ansible

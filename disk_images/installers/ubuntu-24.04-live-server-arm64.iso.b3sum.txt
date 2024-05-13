@@ -1,0 +1,1 @@
+ac7feb9c76f5b34e778710b6128b2dd1ac873085a5288971fbe98540e890afb9  ubuntu-24.04-live-server-arm64.iso
