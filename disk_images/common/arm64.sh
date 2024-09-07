@@ -4,7 +4,7 @@
 # Higher-level scripts wil source this to set up QEMU args for aarch64 guests
 
 HDD_BFB="$DIR/before-first-boot.qcow2"
-QEMU_PREFIX="/opt/homebrew/Cellar/qemu/8.2.1/share/qemu"
+QEMU_PREFIX="/opt/homebrew/Cellar/qemu/9.0.2/share/qemu"
 EFI_CODE="$QEMU_PREFIX/edk2-aarch64-code.fd"
 EFI_VARS_SRC="$QEMU_PREFIX/edk2-arm-vars.fd"
 EFI_VARS_BFB="$DIR/efi_vars_bfb.fd"

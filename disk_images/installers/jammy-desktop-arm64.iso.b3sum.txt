@@ -1,0 +1,1 @@
+dc7c7d337a07dcc07f9006f70aa5d25efde6960e5c6d3e8075728e133fb23cb2  jammy-desktop-arm64.iso

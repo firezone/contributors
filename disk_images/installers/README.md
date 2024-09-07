@@ -5,3 +5,6 @@ Debian
 
 Ubuntu's aarch64 desktop images are hard to find.
 I got these from their [Daily Builds page](https://cdimage.ubuntu.com/jammy/daily-live/current/)
+
+Images may be swapped out to Google Drive 
+https://drive.google.com/drive/folders/1DIiqjIzI363IprJ_gpseoGDdsiifuyMG
